@@ -1,5 +1,7 @@
 let secretNumber;
 let attempts;
+let secretNumbersList;
+let maxNumber = 10;
 
 function assignTextElement(element, text) {
 
@@ -13,9 +15,23 @@ function assignTextElement(element, text) {
 
 function createSecretNumber(){
     
-    // Genera un número aleatorio entre 1 y 10 
+    // Genera un número aleatorio entre 1 y maxNumber 
 
-    return Math.floor(Math.random()*10 + 1);
+    let generatedNumber = Math.floor(Math.random()*maxNumber + 1);
+
+    if ( secretNumbersList.length == maxNumber ) {
+
+        assignTextElement('p', "Se sortearon todos los números posibles");
+
+    } else {
+
+        if (secretNumbersList.includes(generatedNumber)){
+            return createSecretNumber();
+        } else {
+            secretNumbersList.push(generatedNumber);
+            return generatedNumber;
+        }
+    }
 
 }
 
@@ -27,7 +43,7 @@ function initialConditions(){
     - Inicializa el nro de intentos */
 
     assignTextElement('h1' , 'Juego del número secreto!' );
-    assignTextElement('p', 'Ingresa un número del 1 al 10');
+    assignTextElement('p', `Ingresa un número del 1 al ${maxNumber}`);
     secretNumber = createSecretNumber();
     attempts = 1;
 
@@ -70,7 +86,7 @@ function restartGame(){
     initialConditions();
     //Desahibilitar boton de nvo juego
 
-document.querySelector('#restart').setAttribute('disabled','true'); //Desahbilito el boton nuevo juego
+    document.querySelector('#restart').setAttribute('disabled','true'); //Desahbilito el boton nuevo juego
 
     
 }
