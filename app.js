@@ -1,6 +1,6 @@
 let secretNumber;
 let attempts;
-let secretNumbersList;
+let secretNumbersList = [];
 let maxNumber = 10;
 
 function assignTextElement(element, text) {
@@ -19,7 +19,7 @@ function createSecretNumber(){
 
     let generatedNumber = Math.floor(Math.random()*maxNumber + 1);
 
-    if ( secretNumbersList.length == maxNumber ) {
+    if ( secretNumbersList.length === maxNumber ) {
 
         assignTextElement('p', "Se sortearon todos los números posibles");
 
@@ -46,6 +46,7 @@ function initialConditions(){
     assignTextElement('p', `Ingresa un número del 1 al ${maxNumber}`);
     secretNumber = createSecretNumber();
     attempts = 1;
+    
 
 }
 
@@ -56,6 +57,7 @@ function verifyAttempt() {
     if ( numberUser === secretNumber) {
         assignTextElement ('p', ` Acertaste el número en ${attempts} ${(attempts === 1) ? 'vez' : 'veces'}`);
         document.getElementById('restart').removeAttribute('disabled');
+        document.getElementById('attempt').setAttribute('disabled', 'true');
     } else {
 
         // El usuario no acertó.
@@ -87,8 +89,8 @@ function restartGame(){
     //Desahibilitar boton de nvo juego
 
     document.querySelector('#restart').setAttribute('disabled','true'); //Desahbilito el boton nuevo juego
+    document.getElementById('attempt').removeAttribute('disabled');
 
-    
 }
 
 initialConditions();
