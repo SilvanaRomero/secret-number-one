@@ -40,7 +40,13 @@ Participante del programa Oracle Next Education
 
 ## 📝 Estado del proyecto
 
-🚧 En desarrollo — se planea agregar:
-- Botón de reinicio
-- Validación del número ingresado
-- Mejora visual de la interfaz
+🚧 En desarrollo — 
+
+### Próximas mejoras:
+- Deshabilitar el botón "Intentar" al acertar el número
+- Habilitar y deshabilitar botones según el estado del juego
+- Validar que el número ingresado esté dentro del rango permitido (1 a 10)
+- Mostrar un mensaje especial si se sortearon todos los números posibles
+- Mejoras en el diseño visual: estilos más claros, botones accesibles y texto más visible
+
+---
